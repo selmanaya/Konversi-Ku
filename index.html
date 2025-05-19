@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi-Ku | Edukasi Sistem Bilangan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-flask"></i>
+                <h1>Konversi-Ku</h1>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav>
+                    <h2>Navigasi</h2>
+                    <ul>
+                        <li class="active"><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="pages/materi.html"><i class="fas fa-book-open"></i> Materi Edukasi</a></li>
+                        <li><a href="pages/tabel-konversi.html"><i class="fas fa-table"></i> Tabel Konversi</a></li>
+                        <li><a href="pages/langkah-konversi.html"><i class="fas fa-calculator"></i> Langkah Konversi</a></li>
+                        <li><a href="pages/komentar.html"><i class="fas fa-comments"></i> Komentar</a></li>
+                    </ul>
+
+                    <h2>Sistem Bilangan</h2>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-binary"></i> Biner (2)</a></li>
+                        <li><a href="#"><span class="number-icon">10</span> Desimal (10)</a></li>
+                        <li><a href="#"><span class="number-icon">8</span> Oktal (8)</a></li>
+                        <li><a href="#"><span class="number-icon">16</span> Heksadesimal (16)</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <div class="card konversi-card">
+                    <div class="card-header">
+                        <h2>Konversi Sistem Bilangan</h2>
+                        <p>Konversikan angka antara sistem bilangan biner, desimal, oktal, dan heksadesimal</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="konversi-container">
+                            <div class="konversi-input">
+                                <div class="form-group">
+                                    <label for="from-system">Dari Sistem</label>
+                                    <select id="from-system">
+                                        <option value="binary">Biner (2)</option>
+                                        <option value="decimal" selected>Desimal (10)</option>
+                                        <option value="octal">Oktal (8)</option>
+                                        <option value="hexadecimal">Heksadesimal (16)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-value">Nilai Input</label>
+                                    <input type="text" id="input-value" placeholder="Masukkan nilai">
+                                </div>
+                            </div>
+
+                            <div class="konversi-switch">
+                                <button id="swap-button"><i class="fas fa-exchange-alt"></i></button>
+                            </div>
+
+                            <div class="konversi-output">
+                                <div class="form-group">
+                                    <label for="to-system">Ke Sistem</label>
+                                    <select id="to-system">
+                                        <option value="binary" selected>Biner (2)</option>
+                                        <option value="decimal">Desimal (10)</option>
+                                        <option value="octal">Oktal (8)</option>
+                                        <option value="hexadecimal">Heksadesimal (16)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="output-value">Hasil Konversi</label>
+                                    <input type="text" id="output-value" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button id="convert-button" class="primary-button">Konversi</button>
+                            <button id="reset-button" class="secondary-button"><i class="fas fa-sync-alt"></i> Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <div class="tab-header">
+                        <button class="tab-button active" data-tab="ilustrasi">Ilustrasi Konversi</button>
+                        <button class="tab-button" data-tab="catatan">Catatan Pribadi</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="ilustrasi" class="tab-pane active">
+                            <div class="card">
+                                <div class="card-body">
+                                    <canvas id="ilustrasi-canvas" width="800" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="catatan" class="tab-pane">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3>Catatan Pribadi</h3>
+                                    <textarea id="notes" placeholder="Tulis catatan pribadi Anda tentang konversi sistem bilangan di sini..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <span id="current-year"></span> Konversi-Ku. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/konversi.js"></script>
+    <script src="js/ilustrasi.js"></script>
+    <script src="js/dark-mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langkah Konversi | Konversi-Ku</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-flask"></i>
+                <h1>Konversi-Ku</h1>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav>
+                    <h2>Navigasi</h2>
+                    <ul>
+                        <li><a href="../index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="materi.html"><i class="fas fa-book-open"></i> Materi Edukasi</a></li>
+                        <li><a href="tabel-konversi.html"><i class="fas fa-table"></i> Tabel Konversi</a></li>
+                        <li class="active"><a href="langkah-konversi.html"><i class="fas fa-calculator"></i> Langkah Konversi</a></li>
+                        <li><a href="komentar.html"><i class="fas fa-comments"></i> Komentar</a></li>
+                    </ul>
+
+                    <h2>Sistem Bilangan</h2>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-binary"></i> Biner (2)</a></li>
+                        <li><a href="#"><span class="number-icon">10</span> Desimal (10)</a></li>
+                        <li><a href="#"><span class="number-icon">8</span> Oktal (8)</a></li>
+                        <li><a href="#"><span class="number-icon">16</span> Heksadesimal (16)</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Langkah-Langkah Konversi Sistem Bilangan</h2>
+                        <p>Panduan detail cara menghitung konversi antar sistem bilangan</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="tabs">
+                            <div class="tab-header">
+                                <button class="tab-button active" data-tab="biner-ke-desimal">Biner ke Desimal</button>
+                                <button class="tab-button" data-tab="desimal-ke-biner">Desimal ke Biner</button>
+                                <button class="tab-button" data-tab="desimal-ke-oktal">Desimal ke Oktal</button>
+                                <button class="tab-button" data-tab="desimal-ke-heksa">Desimal ke Heksa</button>
+                            </div>
+                            <div class="tab-content">
+                                <div id="biner-ke-desimal" class="tab-pane active">
+                                    <h3>Konversi Biner ke Desimal</h3>
+                                    <p>Untuk mengkonversi bilangan biner ke desimal, kita perlu mengalikan setiap digit dengan nilai posisinya (pangkat dari 2), lalu menjumlahkan hasilnya.</p>
+                                    
+                                    <h4>Langkah-langkah:</h4>
+                                    <ol>
+                                        <li>Identifikasi setiap digit dalam bilangan biner.</li>
+                                        <li>Tentukan nilai posisi untuk setiap digit (dari kanan ke kiri: 2^0, 2^1, 2^2, dst).</li>
+                                        <li>Kalikan setiap digit dengan nilai posisinya.</li>
+                                        <li>Jumlahkan semua hasil perkalian.</li>
+                                    </ol>
+                                    
+                                    <h4>Contoh 1: Konversi 1011₂ ke Desimal</h4>
+                                    <div class="example-box">
+                                        <p class="code">1011₂ = ?₁₀</p>
+                                        <p>Langkah 1-3: Kalikan setiap digit dengan nilai posisinya</p>
+                                        <ul>
+                                            <li>1 × 2^3 = 1 × 8 = 8</li>
+                                            <li>0 × 2^2 = 0 × 4 = 0</li>
+                                            <li>1 × 2^1 = 1 × 2 = 2</li>
+                                            <li>1 × 2^0 = 1 × 1 = 1</li>
+                                        </ul>
+                                        <p>Langkah 4: Jumlahkan semua hasil</p>
+                                        <p class="code">8 + 0 + 2 + 1 = 11</p>
+                                        <p class="result">Jadi, 1011₂ = 11₁₀</p>
+                                    </div>
+                                </div>
+                                <div id="desimal-ke-biner" class="tab-pane">
+                                    <h3>Konversi Desimal ke Biner</h3>
+                                    <p>Untuk mengkonversi bilangan desimal ke biner, kita menggunakan metode pembagian berulang dengan 2 dan mencatat sisa pembagiannya.</p>
+                                    
+                                    <h4>Langkah-langkah:</h4>
+                                    <ol>
+                                        <li>Bagi bilangan desimal dengan 2.</li>
+                                        <li>Catat sisa pembagian (0 atau 1).</li>
+                                        <li>Bagi hasil pembagian dengan 2.</li>
+                                        <li>Ulangi langkah 2 dan 3 sampai hasil pembagian menjadi 0.</li>
+                                        <li>Baca sisa pembagian dari bawah ke atas untuk mendapatkan bilangan biner.</li>
+                                    </ol>
+                                    
+                                    <h4>Contoh 1: Konversi 13₁₀ ke Biner</h4>
+                                    <div class="example-box">
+                                        <p class="code">13₁₀ = ?₂</p>
+                                        <table class="conversion-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>13 ÷ 2 = 6</td>
+                                                    <td>sisa 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6 ÷ 2 = 3</td>
+                                                    <td>sisa 0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3 ÷ 2 = 1</td>
+                                                    <td>sisa 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1 ÷ 2 = 0</td>
+                                                    <td>sisa 1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>Baca sisa pembagian dari bawah ke atas:</p>
+                                        <p class="code">1101</p>
+                                        <p class="result">Jadi, 13₁₀ = 1101₂</p>
+                                    </div>
+                                </div>
+                                <div id="desimal-ke-oktal" class="tab-pane">
+                                    <!-- Konten untuk Desimal ke Oktal -->
+                                    <h3>Konversi Desimal ke Oktal</h3>
+                                    <p>Untuk mengkonversi bilangan desimal ke oktal, kita menggunakan metode pembagian berulang dengan 8 dan mencatat sisa pembagiannya.</p>
+                                    
+                                    <h4>Langkah-langkah:</h4>
+                                    <ol>
+                                        <li>Bagi bilangan desimal dengan 8.</li>
+                                        <li>Catat sisa pembagian (0-7).</li>
+                                        <li>Bagi hasil pembagian dengan 8.</li>
+                                        <li>Ulangi langkah 2 dan 3 sampai hasil pembagian menjadi 0.</li>
+                                        <li>Baca sisa pembagian dari bawah ke atas untuk mendapatkan bilangan oktal.</li>
+                                    </ol>
+                                    
+                                    <h4>Contoh 1: Konversi 42₁₀ ke Oktal</h4>
+                                    <div class="example-box">
+                                        <p class="code">42₁₀ = ?₈</p>
+                                        <table class="conversion-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>42 ÷ 8 = 5</td>
+                                                    <td>sisa 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5 ÷ 8 = 0</td>
+                                                    <td>sisa 5</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>Baca sisa pembagian dari bawah ke atas:</p>
+                                        <p class="code">52</p>
+                                        <p class="result">Jadi, 42₁₀ = 52₈</p>
+                                    </div>
+                                </div>
+                                <div id="desimal-ke-heksa" class="tab-pane">
+                                    <!-- Konten untuk Desimal ke Heksadesimal -->
+                                    <h3>Konversi Desimal ke Heksadesimal</h3>
+                                    <p>Untuk mengkonversi bilangan desimal ke heksadesimal, kita menggunakan metode pembagian berulang dengan 16 dan mencatat sisa pembagiannya. Untuk sisa pembagian 10-15, kita menggunakan huruf A-F.</p>
+                                    
+                                    <h4>Langkah-langkah:</h4>
+                                    <ol>
+                                        <li>Bagi bilangan desimal dengan 16.</li>
+                                        <li>Catat sisa pembagian (0-9 atau A-F untuk 10-15).</li>
+                                        <li>Bagi hasil pembagian dengan 16.</li>
+                                        <li>Ulangi langkah 2 dan 3 sampai hasil pembagian menjadi 0.</li>
+                                        <li>Baca sisa pembagian dari bawah ke atas untuk mendapatkan bilangan heksadesimal.</li>
+                                    </ol>
+                                    
+                                    <h4>Contoh 1: Konversi 42₁₀ ke Heksadesimal</h4>
+                                    <div class="example-box">
+                                        <p class="code">42₁₀ = ?₁₆</p>
+                                        <table class="conversion-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>42 ÷ 16 = 2</td>
+                                                    <td>sisa 10 (A)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2 ÷ 16 = 0</td>
+                                                    <td>sisa 2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>Baca sisa pembagian dari bawah ke atas:</p>
+                                        <p class="code">2A</p>
+                                        <p class="result">Jadi, 42₁₀ = 2A₁₆</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <span id="current-year"></span> Konversi-Ku. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dark-mode.js"></script>
+</body>
+</html>

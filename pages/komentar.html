@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komentar | Konversi-Ku</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-flask"></i>
+                <h1>Konversi-Ku</h1>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav>
+                    <h2>Navigasi</h2>
+                    <ul>
+                        <li><a href="../index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="materi.html"><i class="fas fa-book-open"></i> Materi Edukasi</a></li>
+                        <li><a href="tabel-konversi.html"><i class="fas fa-table"></i> Tabel Konversi</a></li>
+                        <li><a href="langkah-konversi.html"><i class="fas fa-calculator"></i> Langkah Konversi</a></li>
+                        <li class="active"><a href="komentar.html"><i class="fas fa-comments"></i> Komentar</a></li>
+                    </ul>
+
+                    <h2>Sistem Bilangan</h2>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-binary"></i> Biner (2)</a></li>
+                        <li><a href="#"><span class="number-icon">10</span> Desimal (10)</a></li>
+                        <li><a href="#"><span class="number-icon">8</span> Oktal (8)</a></li>
+                        <li><a href="#"><span class="number-icon">16</span> Heksadesimal (16)</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Komentar dan Diskusi</h2>
+                        <p>Ajukan pertanyaan atau bagikan pendapat Anda tentang konversi sistem bilangan</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="comment-form" class="comment-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email (opsional)</label>
+                                    <input type="email" id="email" placeholder="Masukkan email Anda">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="komentar">Komentar</label>
+                                <textarea id="komentar" placeholder="Tulis komentar atau pertanyaan Anda di sini..." required></textarea>
+                            </div>
+                            <button type="submit" class="primary-button">Kirim Komentar</button>
+                        </form>
+
+                        <div class="comments-section">
+                            <h3>Komentar Terbaru</h3>
+                            <div id="comments-container">
+                                <!-- Komentar akan ditambahkan di sini oleh JavaScript -->
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <div class="comment-avatar">B</div>
+                                        <div class="comment-info">
+                                            <h4>Budi Santoso</h4>
+                                            <span class="comment-date">12 Mei 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment-body">
+                                        <p>Website ini sangat membantu saya memahami konversi sistem bilangan. Terima kasih!</p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-action"><i class="fas fa-thumbs-up"></i> <span class="like-count">5</span></button>
+                                        <button class="comment-action"><i class="fas fa-reply"></i> Balas</button>
+                                        <button class="comment-action"><i class="fas fa-flag"></i> Laporkan</button>
+                                    </div>
+                                </div>
+
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <div class="comment-avatar">D</div>
+                                        <div class="comment-info">
+                                            <h4>Dewi Lestari</h4>
+                                            <span class="comment-date">10 Mei 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment-body">
+                                        <p>Apakah ada cara cepat untuk mengkonversi bilangan biner ke heksadesimal tanpa melalui desimal?</p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-action"><i class="fas fa-thumbs-up"></i> <span class="like-count">2</span></button>
+                                        <button class="comment-action"><i class="fas fa-reply"></i> Balas</button>
+                                        <button class="comment-action"><i class="fas fa-flag"></i> Laporkan</button>
+                                    </div>
+                                    <div class="comment-replies">
+                                        <div class="comment reply">
+                                            <div class="comment-header">
+                                                <div class="comment-avatar">A</div>
+                                                <div class="comment-info">
+                                                    <h4>Admin</h4>
+                                                    <span class="comment-date">11 Mei 2023</span>
+                                                </div>
+                                            </div>
+                                            <div class="comment-body">
+                                                <p>Tentu ada! Anda bisa mengelompokkan digit biner menjadi kelompok 4 digit dari kanan, lalu konversi setiap kelompok ke digit heksadesimal. Misalnya 1010 1111 = AF.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <span id="current-year"></span> Konversi-Ku. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/komentar.js"></script>
+</body>
+</html>

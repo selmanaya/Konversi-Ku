@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Edukasi | Konversi-Ku</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-flask"></i>
+                <h1>Konversi-Ku</h1>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav>
+                    <h2>Navigasi</h2>
+                    <ul>
+                        <li><a href="../index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li class="active"><a href="materi.html"><i class="fas fa-book-open"></i> Materi Edukasi</a></li>
+                        <li><a href="tabel-konversi.html"><i class="fas fa-table"></i> Tabel Konversi</a></li>
+                        <li><a href="langkah-konversi.html"><i class="fas fa-calculator"></i> Langkah Konversi</a></li>
+                        <li><a href="komentar.html"><i class="fas fa-comments"></i> Komentar</a></li>
+                    </ul>
+
+                    <h2>Sistem Bilangan</h2>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-binary"></i> Biner (2)</a></li>
+                        <li><a href="#"><span class="number-icon">10</span> Desimal (10)</a></li>
+                        <li><a href="#"><span class="number-icon">8</span> Oktal (8)</a></li>
+                        <li><a href="#"><span class="number-icon">16</span> Heksadesimal (16)</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Materi Edukasi Sistem Bilangan</h2>
+                        <p>Pelajari tentang berbagai sistem bilangan dan cara konversinya</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="tabs">
+                            <div class="tab-header">
+                                <button class="tab-button active" data-tab="pengenalan">Pengenalan</button>
+                                <button class="tab-button" data-tab="biner">Biner</button>
+                                <button class="tab-button" data-tab="oktal">Oktal</button>
+                                <button class="tab-button" data-tab="heksadesimal">Heksadesimal</button>
+                            </div>
+                            <div class="tab-content">
+                                <div id="pengenalan" class="tab-pane active">
+                                    <h3>Pengenalan Sistem Bilangan</h3>
+                                    <p>Sistem bilangan adalah cara untuk mewakili angka dalam sistem penulisan tertentu. Dalam ilmu komputer, kita sering menggunakan beberapa sistem bilangan berbeda:</p>
+                                    <ul>
+                                        <li><strong>Sistem Bilangan Desimal (basis 10)</strong>: Sistem yang kita gunakan sehari-hari, menggunakan digit 0-9.</li>
+                                        <li><strong>Sistem Bilangan Biner (basis 2)</strong>: Sistem yang digunakan komputer pada level paling dasar, hanya menggunakan digit 0 dan 1.</li>
+                                        <li><strong>Sistem Bilangan Oktal (basis 8)</strong>: Menggunakan digit 0-7, sering digunakan untuk menyederhanakan representasi biner.</li>
+                                        <li><strong>Sistem Bilangan Heksadesimal (basis 16)</strong>: Menggunakan digit 0-9 dan huruf A-F, sering digunakan dalam pemrograman untuk mewakili nilai biner dengan cara yang lebih ringkas.</li>
+                                    </ul>
+                                    <p>Memahami sistem bilangan ini sangat penting dalam ilmu komputer, pemrograman, dan elektronika digital karena komputer bekerja dengan sistem biner pada level hardware.</p>
+                                </div>
+                                <div id="biner" class="tab-pane">
+                                    <h3>Sistem Bilangan Biner (Basis 2)</h3>
+                                    <p>Sistem bilangan biner adalah sistem bilangan yang hanya menggunakan dua simbol, yaitu 0 dan 1. Ini adalah sistem bilangan yang digunakan oleh komputer pada level paling dasar.</p>
+                                    
+                                    <h4>Karakteristik Sistem Biner:</h4>
+                                    <ul>
+                                        <li>Basis (radix): 2</li>
+                                        <li>Digit yang digunakan: 0, 1</li>
+                                        <li>Setiap posisi mewakili pangkat dari 2 (2^0, 2^1, 2^2, ...)</li>
+                                    </ul>
+                                    
+                                    <h4>Contoh Nilai Biner:</h4>
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Biner</th>
+                                                <th>Desimal</th>
+                                                <th>Penjelasan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">1</td>
+                                                <td>1 × 2^0 = 1</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">10</td>
+                                                <td class="text-center">2</td>
+                                                <td>1 × 2^1 + 0 × 2^0 = 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">101</td>
+                                                <td class="text-center">5</td>
+                                                <td>1 × 2^2 + 0 × 2^1 + 1 × 2^0 = 4 + 0 + 1 = 5</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">1010</td>
+                                                <td class="text-center">10</td>
+                                                <td>1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 0 × 2^0 = 8 + 0 + 2 + 0 = 10</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="oktal" class="tab-pane">
+                                    <h3>Sistem Bilangan Oktal (Basis 8)</h3>
+                                    <p>Sistem bilangan oktal adalah sistem bilangan dengan basis 8, yang menggunakan delapan simbol: 0, 1, 2, 3, 4, 5, 6, dan 7.</p>
+                                    
+                                    <h4>Karakteristik Sistem Oktal:</h4>
+                                    <ul>
+                                        <li>Basis (radix): 8</li>
+                                        <li>Digit yang digunakan: 0, 1, 2, 3, 4, 5, 6, 7</li>
+                                        <li>Setiap posisi mewakili pangkat dari 8 (8^0, 8^1, 8^2, ...)</li>
+                                    </ul>
+                                    
+                                    <h4>Contoh Nilai Oktal:</h4>
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Oktal</th>
+                                                <th>Desimal</th>
+                                                <th>Penjelasan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">7</td>
+                                                <td class="text-center">7</td>
+                                                <td>7 × 8^0 = 7</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">10</td>
+                                                <td class="text-center">8</td>
+                                                <td>1 × 8^1 + 0 × 8^0 = 8</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">17</td>
+                                                <td class="text-center">15</td>
+                                                <td>1 × 8^1 + 7 × 8^0 = 8 + 7 = 15</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">52</td>
+                                                <td class="text-center">42</td>
+                                                <td>5 × 8^1 + 2 × 8^0 = 40 + 2 = 42</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="heksadesimal" class="tab-pane">
+                                    <h3>Sistem Bilangan Heksadesimal (Basis 16)</h3>
+                                    <p>Sistem bilangan heksadesimal adalah sistem bilangan dengan basis 16, yang menggunakan 16 simbol: 0-9 dan A-F (di mana A-F mewakili nilai 10-15).</p>
+                                    
+                                    <h4>Karakteristik Sistem Heksadesimal:</h4>
+                                    <ul>
+                                        <li>Basis (radix): 16</li>
+                                        <li>Digit yang digunakan: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</li>
+                                        <li>Setiap posisi mewakili pangkat dari 16 (16^0, 16^1, 16^2, ...)</li>
+                                    </ul>
+                                    
+                                    <h4>Contoh Nilai Heksadesimal:</h4>
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Heksadesimal</th>
+                                                <th>Desimal</th>
+                                                <th>Penjelasan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">F</td>
+                                                <td class="text-center">15</td>
+                                                <td>15 × 16^0 = 15</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">10</td>
+                                                <td class="text-center">16</td>
+                                                <td>1 × 16^1 + 0 × 16^0 = 16</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">1A</td>
+                                                <td class="text-center">26</td>
+                                                <td>1 × 16^1 + 10 × 16^0 = 16 + 10 = 26</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2F</td>
+                                                <td class="text-center">47</td>
+                                                <td>2 × 16^1 + 15 × 16^0 = 32 + 15 = 47</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <span id="current-year"></span> Konversi-Ku. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dark-mode.js"></script>
+</body>
+</html>
