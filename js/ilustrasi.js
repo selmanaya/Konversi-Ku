@@ -4,15 +4,43 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
+    let animationId;
     
-    // Mengatur ukuran canvas
+    // Fungsi untuk mendeteksi apakah device mobile
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+    
+    // Mengatur ukuran canvas dengan responsive ratio
     function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = 300;
+        const container = canvas.parentElement;
+        const containerWidth = container ? container.offsetWidth : window.innerWidth;
+        
+        // Set canvas width berdasarkan container
+        canvas.width = Math.min(containerWidth, 800);
+        
+        // Tinggi canvas disesuaikan dengan lebar untuk mobile
+        if (isMobile()) {
+            canvas.height = Math.max(200, canvas.width * 0.4);
+        } else {
+            canvas.height = 300;
+        }
+        
+        // Set CSS untuk memastikan canvas responsive
+        canvas.style.width = '100%';
+        canvas.style.height = 'auto';
+        canvas.style.maxWidth = '100%';
+        canvas.style.display = 'block';
     }
     
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    
+    // Throttle resize event untuk performa yang lebih baik
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resizeCanvas, 100);
+    });
     
     // Fungsi untuk menggambar ilustrasi
     function drawIllustration() {
@@ -27,11 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Menggambar chip
-        const chipWidth = canvas.width * 0.6;
-        const chipHeight = 120;
+        // Scaling factor untuk mobile
+        const scale = isMobile() ? Math.min(canvas.width / 400, 1) : 1;
+        
+        // Menggambar chip dengan ukuran responsif
+        const chipWidth = Math.min(canvas.width * 0.8, 400) * scale;
+        const chipHeight = 80 * scale;
         const chipX = (canvas.width - chipWidth) / 2;
-        const chipY = 50;
+        const chipY = Math.max(20, (canvas.height * 0.15));
         
         // Chip background
         ctx.fillStyle = isDarkMode ? '#334155' : '#e2e8f0';
@@ -39,13 +70,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Chip border
         ctx.strokeStyle = accentColor;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = Math.max(1, 2 * scale);
         ctx.strokeRect(chipX, chipY, chipWidth, chipHeight);
         
-        // Chip pins
+        // Chip pins dengan ukuran responsif (tetap 8 pins)
         const pinCount = 8;
-        const pinWidth = 10;
-        const pinHeight = 15;
+        const pinWidth = Math.max(6, 10 * scale);
+        const pinHeight = Math.max(8, 15 * scale);
         const pinGap = (chipWidth - pinCount * pinWidth) / (pinCount + 1);
         
         ctx.fillStyle = accentColor;
@@ -62,25 +93,34 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.fillRect(x, chipY + chipHeight, pinWidth, pinHeight);
         }
         
-        // Chip text
+        // Chip text dengan ukuran font responsif
         ctx.fillStyle = textColor;
-        ctx.font = '16px monospace';
+        const fontSize = Math.max(10, 16 * scale);
+        const smallFontSize = Math.max(8, 12 * scale);
+        
+        ctx.font = `${fontSize}px monospace`;
         ctx.textAlign = 'center';
-        ctx.fillText('KONVERSI SISTEM BILANGAN', canvas.width / 2, chipY + chipHeight / 2);
+        ctx.textBaseline = 'middle';
         
-        ctx.font = '12px monospace';
-        ctx.fillText('BIN ⟷ DEC ⟷ OCT ⟷ HEX', canvas.width / 2, chipY + chipHeight / 2 + 24);
+        // Text tetap sama untuk semua ukuran layar
+        ctx.fillText('KONVERSI SISTEM BILANGAN', canvas.width / 2, chipY + chipHeight / 2 - 8 * scale);
         
-        // Menggambar aliran data
+        ctx.font = `${smallFontSize}px monospace`;
+        ctx.fillText('BIN ⟷ DEC ⟷ OCT ⟷ HEX', canvas.width / 2, chipY + chipHeight / 2 + 12 * scale);
+        
+        // Menggambar aliran data dengan posisi responsif
         const time = Date.now() / 1000;
+        const waveY = chipY + chipHeight + 60 * scale;
+        const waveAmplitude = Math.max(8, 15 * scale);
         
         // Animasi aliran data
         ctx.strokeStyle = accentColor;
+        ctx.lineWidth = Math.max(1, 2 * scale);
         ctx.beginPath();
         
-        for (let i = 0; i < canvas.width; i += 20) {
+        for (let i = 0; i < canvas.width; i += Math.max(10, 20 * scale)) {
             const x = i;
-            const y = 220 + Math.sin((x + time * 100) / 20) * 15;
+            const y = waveY + Math.sin((x + time * 100) / 20) * waveAmplitude;
             
             if (i === 0) {
                 ctx.moveTo(x, y);
@@ -91,35 +131,66 @@ document.addEventListener('DOMContentLoaded', function() {
         
         ctx.stroke();
         
-        // Menggambar bit-bit
+        // Menggambar bit-bit dengan ukuran responsif (tetap 10 bits)
         const bits = ['0', '1'];
+        const bitCount = 10;
+        const bitRadius = Math.max(4, 8 * scale);
         
-        for (let i = 0; i < 10; i++) {
-            const x = (i * canvas.width) / 10 + ((time * 50) % (canvas.width / 5));
-            const y = 220 + Math.sin((x + time * 100) / 20) * 15;
+        for (let i = 0; i < bitCount; i++) {
+            const x = (i * canvas.width) / bitCount + ((time * 50) % (canvas.width / 5));
+            const y = waveY + Math.sin((x + time * 100) / 20) * waveAmplitude;
             
             if (x < canvas.width) {
                 ctx.fillStyle = bits[i % 2] === '1' ? '#4ade80' : '#f87171';
                 ctx.beginPath();
-                ctx.arc(x, y, 8, 0, Math.PI * 2);
+                ctx.arc(x, y, bitRadius, 0, Math.PI * 2);
                 ctx.fill();
                 
                 ctx.fillStyle = isDarkMode ? '#000' : '#fff';
-                ctx.font = 'bold 10px monospace';
+                ctx.font = `bold ${Math.max(6, 10 * scale)}px monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(bits[i % 2], x, y);
             }
         }
         
-        // Menggambar label
+        // Menggambar label dengan posisi responsif
         ctx.fillStyle = textColor;
-        ctx.font = '14px sans-serif';
+        ctx.font = `${Math.max(10, 14 * scale)}px sans-serif`;
         ctx.textAlign = 'center';
-        ctx.fillText('Visualisasi Aliran Data Digital', canvas.width / 2, 270);
+        ctx.textBaseline = 'alphabetic';
         
-        requestAnimationFrame(drawIllustration);
+        const labelText = 'Visualisasi Aliran Data Digital';
+        const labelY = Math.min(canvas.height - 15, waveY + waveAmplitude + 35);
+        ctx.fillText(labelText, canvas.width / 2, labelY);
+        
+        animationId = requestAnimationFrame(drawIllustration);
     }
     
+    // Mulai animasi
     drawIllustration();
+    
+    // Pause animasi ketika tab tidak aktif untuk menghemat battery
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        } else {
+            drawIllustration();
+        }
+    });
+    
+    // Stop animasi ketika elemen tidak terlihat (optional)
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting && animationId) {
+                cancelAnimationFrame(animationId);
+            } else if (entry.isIntersecting && !animationId) {
+                drawIllustration();
+            }
+        });
+    });
+    
+    observer.observe(canvas);
 });
